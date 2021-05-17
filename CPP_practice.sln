@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_finalClock", "CPP_final
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_calculator", "CPP_calculator\CPP_calculator.vcxproj", "{8FA3FAED-36EE-4132-B07D-60D4264264CB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_newtonsLaws", "CPP_newtonsLaws\CPP_newtonsLaws.vcxproj", "{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{8FA3FAED-36EE-4132-B07D-60D4264264CB}.Release|x64.Build.0 = Release|x64
 		{8FA3FAED-36EE-4132-B07D-60D4264264CB}.Release|x86.ActiveCfg = Release|Win32
 		{8FA3FAED-36EE-4132-B07D-60D4264264CB}.Release|x86.Build.0 = Release|Win32
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Debug|x64.ActiveCfg = Debug|x64
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Debug|x64.Build.0 = Debug|x64
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Debug|x86.ActiveCfg = Debug|Win32
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Debug|x86.Build.0 = Debug|Win32
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Release|x64.ActiveCfg = Release|x64
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Release|x64.Build.0 = Release|x64
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Release|x86.ActiveCfg = Release|Win32
+		{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
