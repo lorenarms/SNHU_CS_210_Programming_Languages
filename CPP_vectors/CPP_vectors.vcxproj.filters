@@ -15,24 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CPP_tempCalc.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CityDetails.cpp">
+    <ClCompile Include="NewFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Driver.cpp">
+    <ClCompile Include="Obj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="FahrenheitTemperature.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CityDetails.h">
+    <ClInclude Include="NewFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Driver.h">
+    <ClInclude Include="Obj.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

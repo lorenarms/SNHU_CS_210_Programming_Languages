@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6c113c74-8f95-4e71-a49d-0c98c0a81463}</ProjectGuid>
-    <RootNamespace>CPPtempCalc</RootNamespace>
+    <ProjectGuid>{cafac6ee-167d-4bde-975d-7979bf80c3e4}</ProjectGuid>
+    <RootNamespace>CPPvectors</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,16 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CityDetails.cpp" />
-    <ClCompile Include="CPP_tempCalc.cpp" />
-    <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NewFunction.cpp" />
+    <ClCompile Include="Obj.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="FahrenheitTemperature.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CityDetails.h" />
-    <ClInclude Include="Driver.h" />
+    <ClInclude Include="NewFunction.h" />
+    <ClInclude Include="Obj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,31 +7,14 @@
 #include "Driver.h"
 
 
-using namespace std;
-/*
-* class City {
-private:
-	string cityName = "NoName";
-	int temperature = -999;
-public:
-	void setCityName(string city) {
-		cityName = city;
-	}
-	void setCityTemp(int temp) {
-		temperature = temp;
-	}
-	string getCityName() const { return cityName; }
-	int getCityTemp() const { return temperature; }
 
-};
-*/
 
-/*
-void ReadCityList(vector<City>& cityList) {
+void Driver::ReadInputFile(vector<CityDetails>& cityList) {
+	cout << "Reading input file function" << endl;
 	ifstream inFS;
 	string cityName;
 	int cityTemp;
-	City currentCity;
+	CityDetails currentCity;
 
 	inFS.open("FahrenheitTemperature.txt");
 
@@ -48,30 +31,15 @@ void ReadCityList(vector<City>& cityList) {
 			cityList.push_back(currentCity);
 		}
 	}
-
 }
-*/
 
-/*
-void DisplayCities(const vector<CityDetails>& cityList) {
+void Driver::DisplayCities(vector<CityDetails>& cityList) {
 	for (int i = 0; i < cityList.size(); ++i) {
 		cout << "City: " << cityList.at(i).getCityName() << endl;
 		cout << "Temperature: " << cityList.at(i).getCityTemp() << endl;
 		cout << endl;
 	}
 }
-*/
 
 
-int main() {
-	vector<CityDetails> cityList;
 
-	Driver newDriver;
-
-	newDriver.ReadInputFile(cityList);
-	newDriver.DisplayCities(cityList);
-
-		
-
-
-}
