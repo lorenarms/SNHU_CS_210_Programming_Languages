@@ -26,6 +26,8 @@ int MenuDriver::CheckKeyPress() {
 	}
 }
 
+//https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+
 
 void MenuDriver::DrawMenu(string items[], int itemsLength, int selection) {
 	int selected = 240;
