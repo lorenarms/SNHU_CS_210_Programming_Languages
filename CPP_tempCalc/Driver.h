@@ -16,6 +16,8 @@ class Driver
 public:
 	void ReadInputFile(vector<CityDetails>& cityList);
 	void DisplayCities(vector<CityDetails>& cityList);
+	void WriteOutputFile(vector<CityDetails>& cityList);
+	void ConvertToCelsius(vector<CityDetails>& cityList);
 
 };
 

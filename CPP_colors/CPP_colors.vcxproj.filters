@@ -21,7 +21,7 @@
     <ClCompile Include="cursorSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="menus.cpp">
+    <ClCompile Include="MenuDriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="cursorSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="menus.h">
+    <ClInclude Include="MenuDriver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

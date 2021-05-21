@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="FahrenheitTemperature.txt" />
+    <Text Include="CelsiusTemperature.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CityDetails.h">

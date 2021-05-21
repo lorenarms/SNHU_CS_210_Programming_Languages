@@ -24,6 +24,7 @@
     <ProjectGuid>{824fe579-66c4-44bf-a4b1-f5ee81aa7e29}</ProjectGuid>
     <RootNamespace>CPPcolors</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CPP_menu</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,12 +140,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="menus.cpp" />
+    <ClCompile Include="MenuDriver.cpp" />
     <ClCompile Include="cursorSet.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="menus.h" />
+    <ClInclude Include="MenuDriver.h" />
     <ClInclude Include="cursorSet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

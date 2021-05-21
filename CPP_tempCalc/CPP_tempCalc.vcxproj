@@ -144,6 +144,7 @@
     <ClCompile Include="Driver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CelsiusTemperature.txt" />
     <Text Include="FahrenheitTemperature.txt" />
   </ItemGroup>
   <ItemGroup>
