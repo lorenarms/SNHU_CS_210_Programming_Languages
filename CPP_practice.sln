@@ -17,11 +17,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_calculator", "CPP_calcu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_newtonsLaws", "CPP_newtonsLaws\CPP_newtonsLaws.vcxproj", "{2FD42F68-AE9C-4F7F-8B90-2284566BB4CC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_colors", "CPP_colors\CPP_colors.vcxproj", "{824FE579-66C4-44BF-A4B1-F5EE81AA7E29}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_menu", "CPP_colors\CPP_colors.vcxproj", "{824FE579-66C4-44BF-A4B1-F5EE81AA7E29}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_tempCalc", "CPP_tempCalc\CPP_tempCalc.vcxproj", "{6C113C74-8F95-4E71-A49D-0C98C0A81463}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_vectors", "CPP_vectors\CPP_vectors.vcxproj", "{CAFAC6EE-167D-4BDE-975D-7979BF80C3E4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_6.11", "CPP_Lab_6.11\CPP_Lab_6.11.vcxproj", "{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_7.17", "CPP_Lab_7.17\CPP_Lab_7.17.vcxproj", "{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +115,22 @@ Global
 		{CAFAC6EE-167D-4BDE-975D-7979BF80C3E4}.Release|x64.Build.0 = Release|x64
 		{CAFAC6EE-167D-4BDE-975D-7979BF80C3E4}.Release|x86.ActiveCfg = Release|Win32
 		{CAFAC6EE-167D-4BDE-975D-7979BF80C3E4}.Release|x86.Build.0 = Release|Win32
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Debug|x64.ActiveCfg = Debug|x64
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Debug|x64.Build.0 = Debug|x64
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Debug|x86.ActiveCfg = Debug|Win32
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Debug|x86.Build.0 = Debug|Win32
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Release|x64.ActiveCfg = Release|x64
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Release|x64.Build.0 = Release|x64
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Release|x86.ActiveCfg = Release|Win32
+		{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}.Release|x86.Build.0 = Release|Win32
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Debug|x64.ActiveCfg = Debug|x64
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Debug|x64.Build.0 = Debug|x64
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Debug|x86.ActiveCfg = Debug|Win32
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Debug|x86.Build.0 = Debug|Win32
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Release|x64.ActiveCfg = Release|x64
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Release|x64.Build.0 = Release|x64
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Release|x86.ActiveCfg = Release|Win32
+		{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
