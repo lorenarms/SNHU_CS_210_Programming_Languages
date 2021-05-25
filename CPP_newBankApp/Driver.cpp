@@ -29,13 +29,18 @@ int main() {
 
 	while (outerRun) {
 		system("cls");
-		bool innerRun = true;
+		int innerRun = 2;
 		newCalculate.UserInput(newAccount, newMenu, newDraw);
-		while (innerRun) {
+		while (innerRun != 1 && innerRun != 0) {
 
 
 			innerRun = newCalculate.RunMainProgram(newMenu, newAccount, newDraw);
-
+			if (innerRun == 0) {
+				outerRun = false;
+			}
+			else if (innerRun == 1) {
+				break;
+			}
 			
 		}
 		

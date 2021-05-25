@@ -13,6 +13,9 @@ int Menu::CheckKeyPress() {
 	if ((GetAsyncKeyState(0x51) & 0x01)) {			// 'q' key for 'quit'
 		return 1;
 	}
+	else if ((GetAsyncKeyState(0x4D) & 0x01)) {		// 'm' for user input
+		return 7;
+	}
 	else if ((GetAsyncKeyState(0x0D) & 0x01)) {		// enter
 		return 2;
 	}

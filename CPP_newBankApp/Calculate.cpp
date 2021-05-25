@@ -73,6 +73,10 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 			}
 			
 		}
+		if (selection == 7)		// 'm' key for input
+		{
+			return 1;
+		}
 		newMenu.SetNewCursor(15, 0);
 		cout << "Page " << page + 1 << " of " << newAccount.GetNumberOfPages() << endl;
 		newMenu.SetNewCursor(16, 0);
@@ -82,6 +86,6 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 		
 	}
 	
-	return false;
+	return 0;
 
 }
