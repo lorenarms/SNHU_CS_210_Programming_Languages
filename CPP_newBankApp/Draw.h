@@ -1,7 +1,3 @@
-#pragma once
-
-
-
 #include <iostream>
 #include <vector>
 
@@ -13,6 +9,5 @@ class Menu;
 class Draw
 {
 public:
-	void DrawTable(Menu& menu, Account& newAccount);
+	void DrawTable(Menu& menu, Account& newAccount, int page);
 };
-

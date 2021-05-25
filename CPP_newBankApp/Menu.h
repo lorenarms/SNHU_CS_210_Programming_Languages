@@ -11,9 +11,6 @@
 #include <vector>
 #include <Windows.h>
 
-#include "Menu.h"
-
-
 
 using namespace std;
 
@@ -23,7 +20,6 @@ class Menu
 {
 public:
 
-
 	int CheckKeyPress();
 	void DrawMenu(string[], int, int);
 	void DrawMenu(vector<string>, int&);
@@ -32,10 +28,6 @@ public:
 	void RunMenu(vector<string>, int&);
 	void MenuModifier(vector<string>& menu);
 	void SetWindowSize(int w, int h);
-
-	
-
-
 
 };
 

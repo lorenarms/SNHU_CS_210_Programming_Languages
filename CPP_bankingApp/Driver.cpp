@@ -27,9 +27,9 @@ int main() {
 	system("cls");
 
 	while (run) {
-		cout << newAccount.GetMonthlyDeposit() << endl;
+		cout << newAccount.GetMonthlyDeposit() << "     " << newAccount.GetInterestRate() << endl;
 		newAccount.SetYearlyBalance();
-		newTable.DrawTable(newMenu, newAccount, calculator);
+		newTable.DrawTable(newMenu, newAccount);
 		run = calculator.RunMainProgram(newMenu, newAccount);
 		newMenu.SetNewCursor(0, 0);
 
