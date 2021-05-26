@@ -21,10 +21,34 @@ int main() {
 	Draw newDraw;
 
 	newMenu.HideCursorBlink();
+	newMenu.SetColor(15);
 	
-	
+	vector<string> mainMenu = { "New Account", "About", "Quit" };
 
 	bool outerRun = true;
+	bool mainRun = true;
+	int selection = 0;
+	newDraw.DrawMainTitle(newMenu);
+	newMenu.MenuModifier(mainMenu);
+	newMenu.DrawMenu(mainMenu, selection);
+
+	while (mainRun) {
+		
+		newMenu.RunMenu(mainMenu, selection);
+		if (selection == 1) {
+			mainRun = false;
+		}
+		else if (selection == 2) {
+
+			newDraw.DrawAbout(newMenu, newAccount, newDraw);
+		}
+		else if (selection == 3) {
+			system("cls");
+			return 0;
+		}
+
+	}
+
 	
 
 	while (outerRun) {

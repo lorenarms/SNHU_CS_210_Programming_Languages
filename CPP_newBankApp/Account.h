@@ -1,11 +1,16 @@
 #pragma once
 
+
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
+class Draw;
+
 class Account;
+
 
 class Pages {
 private:
@@ -49,7 +54,7 @@ public:
 	double GetYearlyBalance(int i);
 	double GetYearlyInterestEarned(int i);
 	int GetNumberOfPages();
-	void GetPages(int page);
+	void GetPages(int page, Account& newAccount, Draw& newDraw);
 
 	void DisplayAllValues();
 

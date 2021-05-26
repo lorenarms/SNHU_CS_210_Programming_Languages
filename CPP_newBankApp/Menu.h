@@ -25,9 +25,13 @@ public:
 	void DrawMenu(vector<string>, int&);
 	void SetNewCursor(int row, int col);
 	void HideCursorBlink();
+	void ShowCursorBlink();
 	void RunMenu(vector<string>, int&);
 	void MenuModifier(vector<string>& menu);
 	void SetWindowSize(int w, int h);
+	void SetColor(int color);
+	int GetWindowWidth();
+
 
 };
 

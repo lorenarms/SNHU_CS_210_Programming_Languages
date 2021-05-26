@@ -1,4 +1,6 @@
 #include "Account.h"
+#include "Draw.h"
+
 
 #include <string>
 #include <iostream>
@@ -70,6 +72,7 @@ int Account::SetNumberOfPages() {
 	return x;
 }
 
+
 void Account::SetPages() {
 	double row[] = { 0.00, 0.00, 0.00 };
 	Pages newPage;
@@ -87,7 +90,7 @@ void Account::SetPages() {
 
 }
 
-void Account::GetPages(int page) {
+void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;
 	int maxEntry = 0;
 	int minEntry = 0;
@@ -108,26 +111,8 @@ void Account::GetPages(int page) {
 			minEntry = maxEntry - 5;
 		}
 	}
+	newDraw.DrawPages(newAccount, minEntry, maxEntry);
 	
-	printf("%10s%5s%-10s%-16s%-10s\n", "Year", "     ", "Deposit", "Interest", "Balance");
-	//cout << "Min: " << minEntry << "   Max: " << maxEntry << endl;
-	for (int i = minEntry; i < maxEntry; i++) {
-		printf("%10d", i + 1);
-		printf("%5s", "     ");
-		printf("%-10.2f", GetMonthlyDeposit());
-		printf("% 1s", "$");
-		printf("%-15.2f", GetYearlyInterestEarned(i));
-		printf("% 1s", "$");
-		printf("%-10.2f", GetYearlyBalance(i));
-		cout << endl;
-		cout << endl;
-		
-		
-	}
-	
-	
-	
-
 }
 
 double Account::GetInitialInvestment() {

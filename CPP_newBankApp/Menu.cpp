@@ -38,6 +38,9 @@ int Menu::CheckKeyPress() {
 
 //https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
+void Menu::SetColor(int color) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
 
 void Menu::DrawMenu(string items[], int itemsLength, int selection) {
 	int selected = 240;
@@ -58,10 +61,13 @@ void Menu::DrawMenu(string items[], int itemsLength, int selection) {
 	}
 }
 void Menu::DrawMenu(vector<string> menu, int& selection) {
+	int width = menu.at(0).size();
+	int column = GetWindowWidth();
+	column = column / 2 - (width / 2);
 	int selected = 240;
 	int unselected = 15;
 	for (int i = 0; i < menu.size(); i++) {
-		SetNewCursor(i + 2, 2);
+		SetNewCursor(i + 12, column);
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
 
 		if (i == selection - 1) {
@@ -70,7 +76,7 @@ void Menu::DrawMenu(vector<string> menu, int& selection) {
 		cout << menu.at(i) << endl;
 		SetNewCursor(6, 20);
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-		//cout << "Index: " << selection << endl;
+		
 	}
 }
 
@@ -98,6 +104,7 @@ void Menu::RunMenu(vector<string> menu, int& selection) {
 
 		}
 		else if (j == 2) {		//enter
+			//i = false;
 			return;
 		}
 		DrawMenu(menu, selection);
@@ -119,6 +126,16 @@ void Menu::HideCursorBlink() {
 	CONSOLE_CURSOR_INFO info;
 	info.dwSize = 100;
 	info.bVisible = FALSE;
+	SetConsoleCursorInfo(consoleHandle, &info);
+}
+
+void Menu::ShowCursorBlink() {
+
+	//hide the blinking cursor
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	info.dwSize = 100;
+	info.bVisible = TRUE;
 	SetConsoleCursorInfo(consoleHandle, &info);
 }
 
@@ -163,4 +180,14 @@ void Menu::SetWindowSize(int w, int h) {
 	GetWindowRect(console, &ConsoleRect);
 
 	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, w, h, TRUE);
+}
+
+int Menu::GetWindowWidth() {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int columns, rows;
+
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+	return columns;
 }
