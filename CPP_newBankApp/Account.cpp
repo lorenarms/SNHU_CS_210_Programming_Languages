@@ -23,7 +23,7 @@ void Account::SetMonthlyDeposit(double x) {
 }
 void Account::SetNumberOfYears(int x) {
 	numberOfYears = x;
-	pages = SetNumberOfPages();
+	
 }
 
 void Account::SetYearlyBalance() {
@@ -59,32 +59,57 @@ void Account::SetYearlyBalance() {
 	cout << endl;
 
 }
-
-int Account::SetNumberOfPages() {
-	int x;
+int Account::YearsToPages(int x) {
 	x = numberOfYears / 5;
 	if (numberOfYears % 5 > 0) {
 		//cout << numberOfYears % 5 << endl;
 		x = x + 1;
 	}
-	
 	return x;
+}
+
+
+void Account::SetNumberOfPages(int x) {
+	//int x;
+	
+	pages = x;
+	//return x;
 }
 
 int Account::SetNumberOfMonthPages() {
 	int x;
 	x = numberOfYears * 12;
-	x = x / 5;
+	//THIS IS THE PROBLEM
+	//when x is divisible by 5, it results in a multiple of 12
+	//% 12 will result in a number greater than 0, which will add 1 to x (pages)
+	//resulting in an extra page that can't be navigated to
+	
 	if (x % 5 > 0) {
 		//cout << numberOfYears % 5 << endl;
+		x = x / 5;
 		x = x + 1;
+	}
+	else {
+		x = x / 5;
 	}
 
 	return x;
 }
+int Account::SetNumberOfYearPages() {
+	int x;
+	x = numberOfYears;
+	x = x / 5;
+	if (numberOfYears % 5 > 0) {
+		x = x + 1;
+	}
+	else if (x == 0) {
+		x = 1;
+	}
+	return x;
+}
 
 
-
+//change this to pass by reference
 void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;
 	int maxEntry = 0;
@@ -106,9 +131,11 @@ void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 			minEntry = maxEntry - 5;
 		}
 	}
+	
 	newDraw.DrawPages(newAccount, minEntry, maxEntry);
 	
 }
+//change this to pass by reference
 
 void Account::GetMonthPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;

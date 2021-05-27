@@ -21,7 +21,8 @@ public:
 	void SetInterestRate(double x);
 	void SetNumberOfYears(int x);
 	void SetYearlyBalance();
-	int SetNumberOfPages();
+	void SetNumberOfPages(int x);
+	int SetNumberOfYearPages();
 	int SetNumberOfMonthPages();
 
 	double GetInitialInvestment();
@@ -36,6 +37,7 @@ public:
 	void GetMonthPages(int page, Account& newAccount, Draw& newDraw);
 	void GetPages(int page, Account& newAccount, Draw& newDraw);
 
+	int YearsToPages(int x);
 	void DisplayAllValues();
 
 private:
@@ -44,6 +46,7 @@ private:
 	double interestRate = 0.00;
 	int numberOfYears = 0;
 	int pages = 0;
+	int monthPages = 0;
 	std::vector<double> yearlyBalance = { 0.00 };
 	std::vector<double> yearlyInterestEarned = { 0.00 };
 	std::vector<double> monthlyBalance = { 0.00 };

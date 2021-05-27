@@ -47,6 +47,8 @@ void Calculate::UserInput(Account& newAccount, Menu& newMenu, Draw& newDraw) {
 		x = InvalidInputHandler();
 	}
 	newAccount.SetNumberOfYears(x);
+	x = newAccount.YearsToPages(x);
+	newAccount.SetNumberOfPages(x);
 	newAccount.SetYearlyBalance();
 	system("cls");
 	newMenu.HideCursorBlink();
@@ -86,24 +88,24 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 		if (selection == 8) {
 			if (data == 0) {
 				data = 1;
-
+				newAccount.SetNumberOfPages(newAccount.SetNumberOfMonthPages());
 			}
 			else if (data == 1) {
 				data = 0;
+				system("cls");
+				
+				newAccount.SetNumberOfPages(newAccount.SetNumberOfYearPages());
+				cout << "years: " << newAccount.GetNumberOfYears() << endl;
+				cout << "pages: " << newAccount.GetNumberOfPages() << endl;
+				cout << "numberOfYearPages: " << newAccount.SetNumberOfYearPages() << endl;
+				cout << "Y: " << endl;
+				int y;
+				//cin >> y;
+				
 			}
+			page = 0;
 			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 		}
-		/*
-		if (selection == 8 && data == 1) {
-			data = 0;
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
-		}
-		
-		*/
-		
-
-
-
 		if (selection == 5) {		//left
 			
 			page--;
@@ -153,12 +155,13 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 			while (_kbhit()) _getch();
 			NewValues(newAccount, item, newDraw, newMenu);
 			page = 0;
+			data = 0;
 			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 			newMenu.CheckKeyPress();
 			
 			
 		}
-		if (selection == 7)		// 'm' key for input
+		if (selection == 7)		// 'i' key for input
 		{
 			return 1;
 		}
@@ -235,7 +238,9 @@ void Calculate::SetNewValues(Menu& newMenu, Account& newAccount, int item, int r
 			x = 1;
 		}
 		newAccount.SetNumberOfYears(x);
-		//RunMainProgram(newMenu, newAccount, newDraw);
+		x = newAccount.YearsToPages(x);
+		newAccount.SetNumberOfPages(x);
+		newAccount.SetYearlyBalance();
 		break;
 	}
 	default: {
