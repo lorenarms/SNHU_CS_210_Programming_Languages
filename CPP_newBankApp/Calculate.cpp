@@ -11,10 +11,13 @@ using namespace std;
 void Calculate::UserInput(Account& newAccount, Menu& newMenu, Draw& newDraw) {
 	double x;
 	int y;
-	
+	newMenu.ShowCursorBlink();
 	cin.sync();
 	while (_kbhit()) _getch();		//clear keyboard buffer so next input is blank for user
 	
+	cout << "AirGead Banking: NEW ACCOUNT" << endl;
+	cout << setw(86) << setfill('=') << " " << endl;
+	cout << setfill(' ');
 	
 	cout << "Initial investment amount: ";
 	cin >> x;
@@ -46,6 +49,7 @@ void Calculate::UserInput(Account& newAccount, Menu& newMenu, Draw& newDraw) {
 	newAccount.SetNumberOfYears(x);
 	newAccount.SetYearlyBalance();
 	system("cls");
+	newMenu.HideCursorBlink();
 	
 
 }
@@ -53,7 +57,6 @@ double Calculate::InvalidInputHandler() {
 	double x;
 	cin.clear();
 	cin.ignore(100, '\n');
-	//cout << "Invalid input; please enter a number: ";
 	cin >> x;
 	return x;
 }
@@ -69,24 +72,51 @@ double Calculate::LessThanRequiredInputHandler() {
 bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw) {
 	int item = 0;
 	int page = 0;
+	int data = 0;
 	newMenu.SetNewCursor(15, 0);
 	cin.sync();
 	while (_kbhit()) _getch();
 
 	int selection = 0;
-	newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+	newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 	
 	
 	while (selection != 1) {
 		selection = newMenu.CheckKeyPress();
+		if (selection == 8) {
+			if (data == 0) {
+				data = 1;
+
+			}
+			else if (data == 1) {
+				data = 0;
+			}
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
+		}
+		/*
+		if (selection == 8 && data == 1) {
+			data = 0;
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
+		}
 		
+		*/
+		
+
+
+
 		if (selection == 5) {		//left
 			
 			page--;
 			if (page < 0) {
 				page = 0;
 			}
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+			newMenu.SetNewCursor(15, 21);
+			newMenu.SetColor(240);
+			cout << "< <";
+			newMenu.SetColor(15);
+			Sleep(20);
+			
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 		}
 		if (selection == 6) {		//right
 			
@@ -94,7 +124,12 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 			if (page > newAccount.GetNumberOfPages() - 1) {
 				page = newAccount.GetNumberOfPages() - 1;
 			}
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+			newMenu.SetNewCursor(15, 62);
+			newMenu.SetColor(240);
+			cout << "> >";
+			newMenu.SetColor(15);
+			Sleep(20);
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 			
 		}
 		if (selection == 3) {
@@ -102,7 +137,7 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 			if (item > 4) {
 				item = 4;
 			}
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 			
 		}
 		if (selection == 4) {
@@ -110,14 +145,15 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 			if (item < 1) {
 				item = 1;
 			}
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 			
 		}
 		if (selection == 2) {
 			cin.sync();
 			while (_kbhit()) _getch();
 			NewValues(newAccount, item, newDraw, newMenu);
-			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item);
+			page = 0;
+			newDraw.DrawEverything(newMenu, newAccount, page, selection, newDraw, item, data);
 			newMenu.CheckKeyPress();
 			
 			
@@ -129,35 +165,30 @@ bool Calculate::RunMainProgram(Menu& newMenu, Account& newAccount, Draw& newDraw
 		if (selection == 0) {
 
 		}
-
-		
-		
 	}
-	
 	return 0;
-
 }
 
 void Calculate::NewValues(Account& newAccount, int item, Draw& newDraw, Menu& newMenu) {
 	switch (item) {
 	case 1: {
 		int row = 17;
-		SetNewValues(newMenu, newAccount, item, row);
+		SetNewValues(newMenu, newAccount, item, row, newDraw);
 		break;
 	}
 	case 2: {
 		int row = 18;
-		SetNewValues(newMenu, newAccount, item, row);
+		SetNewValues(newMenu, newAccount, item, row, newDraw);
 		break;
 	}
 	case 3: {
 		int row = 19;
-		SetNewValues(newMenu, newAccount, item, row);
+		SetNewValues(newMenu, newAccount, item, row, newDraw);
 		break;
 	}
 	case 4: {
 		int row = 20;
-		SetNewValues(newMenu, newAccount, item, row);
+		SetNewValues(newMenu, newAccount, item, row, newDraw);
 		break;
 	}
 	default: {
@@ -169,7 +200,7 @@ void Calculate::NewValues(Account& newAccount, int item, Draw& newDraw, Menu& ne
 	return;
 }
 
-void Calculate::SetNewValues(Menu& newMenu, Account& newAccount, int item, int row) {
+void Calculate::SetNewValues(Menu& newMenu, Account& newAccount, int item, int row, Draw& newDraw) {
 	cin.sync();
 	while (_kbhit()) _getch();
 	double x;
@@ -179,6 +210,12 @@ void Calculate::SetNewValues(Menu& newMenu, Account& newAccount, int item, int r
 	printf("%-10s", "");
 	newMenu.SetNewCursor(row, 25);
 	cin >> x;
+	while (cin.fail() || x < 0.00) {
+		newMenu.SetNewCursor(row, 35);
+		cout << "Invalid input, please try again. ";
+		newMenu.SetNewCursor(row, 25);
+		x = InvalidInputHandler();
+	}
 	newMenu.SetColor(15);
 	switch (item) {
 	case 1: {
@@ -194,7 +231,11 @@ void Calculate::SetNewValues(Menu& newMenu, Account& newAccount, int item, int r
 		break;
 	}
 	case 4: {
+		if (x < 1) {
+			x = 1;
+		}
 		newAccount.SetNumberOfYears(x);
+		//RunMainProgram(newMenu, newAccount, newDraw);
 		break;
 	}
 	default: {

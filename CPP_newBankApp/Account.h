@@ -12,30 +12,7 @@ class Draw;
 class Account;
 
 
-class Pages {
-private:
-	double yearPages[5][3];
-	double monthPages[5][3];
 
-public:
-	void SetPages(double row[], int i) {
-		for (int j = 0; j < 3; j++) {
-			yearPages[i][j] = row[j];
-		}
-
-		
-	}
-	void GetPages(Pages page, int count = 5) {
-		for (int i = 0; i < count; i++) {
-			cout << "Year: " << yearPages[i][0];
-			cout << "Interest Earned: " << yearPages[i][1];
-			cout << "Balance: " << yearPages[i][2];
-			cout << "    " << i;
-			cout << endl;
-		}
-	}
-
-};
 
 class Account {
 public:
@@ -45,15 +22,18 @@ public:
 	void SetNumberOfYears(int x);
 	void SetYearlyBalance();
 	int SetNumberOfPages();
-	void SetPages();
+	int SetNumberOfMonthPages();
 
 	double GetInitialInvestment();
 	double GetMonthlyDeposit();
 	double GetInterestRate();
 	int GetNumberOfYears();
 	double GetYearlyBalance(int i);
+	double GetMonthlyBalance(int i);
 	double GetYearlyInterestEarned(int i);
+	double GetMonthlyInterestEarned(int i);
 	int GetNumberOfPages();
+	void GetMonthPages(int page, Account& newAccount, Draw& newDraw);
 	void GetPages(int page, Account& newAccount, Draw& newDraw);
 
 	void DisplayAllValues();
@@ -68,8 +48,6 @@ private:
 	std::vector<double> yearlyInterestEarned = { 0.00 };
 	std::vector<double> monthlyBalance = { 0.00 };
 	std::vector<double> monthlyInterestEarned = { 0.00 };
-	std::vector<Pages> yearPages;
-	std::vector<Pages> monthPages;
-
+	
 
 };

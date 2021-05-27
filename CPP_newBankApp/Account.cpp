@@ -11,7 +11,6 @@
 
 using namespace std;
 
-class Pages;
 
 void Account::SetInitialInvestment(double x) {
 	initialInvestment = x;
@@ -65,30 +64,26 @@ int Account::SetNumberOfPages() {
 	int x;
 	x = numberOfYears / 5;
 	if (numberOfYears % 5 > 0) {
-		cout << numberOfYears % 5 << endl;
+		//cout << numberOfYears % 5 << endl;
 		x = x + 1;
 	}
 	
 	return x;
 }
 
-
-void Account::SetPages() {
-	double row[] = { 0.00, 0.00, 0.00 };
-	Pages newPage;
-	yearPages.clear();
-	for (int i = 0; i < numberOfYears; i++) {
-		row[0] = i + 1.00;
-		row[1] = yearlyInterestEarned.at(i);
-		row[2] = yearlyBalance.at(i);
-
-		
-
-		newPage.SetPages(row, i);
+int Account::SetNumberOfMonthPages() {
+	int x;
+	x = numberOfYears * 12;
+	x = x / 5;
+	if (x % 5 > 0) {
+		//cout << numberOfYears % 5 << endl;
+		x = x + 1;
 	}
-	yearPages.emplace_back(newPage);
 
+	return x;
 }
+
+
 
 void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;
@@ -115,6 +110,31 @@ void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 	
 }
 
+void Account::GetMonthPages(int page, Account& newAccount, Draw& newDraw) {
+	page += 1;
+	int maxEntry = 0;
+	int minEntry = 0;
+	int count = monthlyBalance.size();
+
+	if (monthlyBalance.size() % 5 == 0) {
+		maxEntry = page * 5;
+		minEntry = maxEntry - 5;
+	}
+	else if (monthlyBalance.size() % 5 > 0) {
+		if (page == pages) {
+			count = monthlyBalance.size() % 5;
+			maxEntry = monthlyBalance.size();
+			minEntry = maxEntry - count;
+		}
+		else {
+			maxEntry = page * 5;
+			minEntry = maxEntry - 5;
+		}
+	}
+	newDraw.DrawMonthPages(newAccount, minEntry, maxEntry);
+
+}
+
 double Account::GetInitialInvestment() {
 	return initialInvestment;
 }
@@ -131,8 +151,16 @@ double Account::GetYearlyBalance(int i) {
 	return yearlyBalance.at(i);
 }
 
+double Account::GetMonthlyBalance(int i) {
+	return monthlyBalance.at(i);
+}
+
 double Account::GetYearlyInterestEarned(int i) {
 	return yearlyInterestEarned.at(i);
+}
+
+double Account::GetMonthlyInterestEarned(int i) {
+	return monthlyInterestEarned.at(i);
 }
 
 int Account::GetNumberOfPages() {

@@ -14,8 +14,12 @@ int Menu::CheckKeyPress() {
 		return 1;
 	}
 	else if ((GetAsyncKeyState(0x4D) & 0x01)) {		// 'm' for user input
+		return 8;
+	}
+	else if ((GetAsyncKeyState(0x49) & 0x01)) {		// 'i' for user input
 		return 7;
 	}
+
 	else if ((GetAsyncKeyState(0x0D) & 0x01)) {		// enter
 		return 2;
 	}

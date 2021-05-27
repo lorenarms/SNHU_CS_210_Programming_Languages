@@ -22,7 +22,7 @@ public:
 	int ChangeMonthlyDeposit(Menu& newMenu, Account& newAccount, Draw& newDraw);
 	int ChangeInterestRate(Menu& newMenu, Account& newAccount, Draw& newDraw);
 	void NewValues(Account& newAccount, int item, Draw& newDraw, Menu& newMenu);
-	void SetNewValues(Menu& newMenu, Account& newAccount, int item, int row);
+	void SetNewValues(Menu& newMenu, Account& newAccount, int item, int row, Draw& newDraw);
 	double InvalidInputHandler();
 	double LessThanRequiredInputHandler();
 

@@ -20,9 +20,10 @@ int main() {
 	Calculate newCalculate;
 	Draw newDraw;
 
-	newMenu.HideCursorBlink();
-	newMenu.SetColor(15);
 	
+	newMenu.SetColor(15);
+	newMenu.SetWindowSize(800, 600);
+	newMenu.HideCursorBlink();
 	vector<string> mainMenu = { "New Account", "About", "Quit" };
 
 	bool outerRun = true;
