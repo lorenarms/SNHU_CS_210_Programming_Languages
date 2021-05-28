@@ -11,6 +11,12 @@
 
 using namespace std;
 
+//most porgram logic happens here
+//the line between this class and the Calculate class is slightly blurred
+//they could essentially be one class
+
+//most getters are pretty simple
+//some had to be more complicated to access the variables within Account
 
 void Account::SetInitialInvestment(double x) {
 	initialInvestment = x;
@@ -26,6 +32,7 @@ void Account::SetNumberOfYears(int x) {
 	
 }
 
+//sets the yearly and monthly balances in the vectors, to be accessed later 
 void Account::SetYearlyBalance() {
 	yearlyBalance.clear();
 	yearlyInterestEarned.clear();
@@ -35,22 +42,18 @@ void Account::SetYearlyBalance() {
 	double monthlyInterest = 0.00;
 	double yearly = initialInvestment;
 
-
+	//need to calculate the number of years, then store the amount of interest and
+	//ending balance in their own vectors
 	for (int i = 0; i < numberOfYears; i++) {
 		monthlyInterest = 0;
 		for (int j = 0; j < 12; j++) {
 			temp = (yearly + monthlyDeposit);
 			temp = temp * (interestRate / 12);
-
 			monthlyInterestEarned.emplace_back(temp);
-
 			yearly += monthlyDeposit;
 			yearly += temp;
-
 			monthlyBalance.emplace_back(yearly);
 			monthlyInterest += temp;
-
-
 		}
 		yearlyInterestEarned.emplace_back(monthlyInterest);
 		yearlyBalance.emplace_back(yearly);
@@ -61,31 +64,31 @@ void Account::SetYearlyBalance() {
 }
 int Account::YearsToPages(int x) {
 	x = numberOfYears / 5;
-	if (numberOfYears % 5 > 0) {
-		//cout << numberOfYears % 5 << endl;
-		x = x + 1;
+	if (numberOfYears % 5 > 0) {	//is the number of years less than five or not evenly divisible by five?
+									//ie the last page has less than five
+						
+		x = x + 1;			//then add 1 to the total (is already 0 if years is less than 5)
 	}
 	return x;
 }
 
 
 void Account::SetNumberOfPages(int x) {
-	//int x;
-	
+	//set the number of pages to the param passed
 	pages = x;
-	//return x;
+	
 }
 
 int Account::SetNumberOfMonthPages() {
 	int x;
 	x = numberOfYears * 12;
-	//THIS IS THE PROBLEM
-	//when x is divisible by 5, it results in a multiple of 12
-	//% 12 will result in a number greater than 0, which will add 1 to x (pages)
-	//resulting in an extra page that can't be navigated to
-	
+	//this one was tricky, for month amounts divisible by five, it kept adding an extra page
+	//it did this bc i had the 'x = x / 5' outside the if statment below, so an amount that was
+	//divisible by five also resulted in a remainder, which added 1 below
+	//ex 5 years x 12 = 60, 60 / 5 = 12, 12 % 5 = 2, so 12 pages turned to 13, but 
+	//there weren't enough entries for 13 pages, so once the user navigated to the 13th page
+	//the program would crash
 	if (x % 5 > 0) {
-		//cout << numberOfYears % 5 << endl;
 		x = x / 5;
 		x = x + 1;
 	}
@@ -95,6 +98,12 @@ int Account::SetNumberOfMonthPages() {
 
 	return x;
 }
+
+//this function had a similar issue to the one above, but the bug only arose
+//once the user switch from months back to years, it would add extra pages that caused a crash
+//similar solution, except i added an extra 'if else' to account for int division
+//ex 4 / 5 = 0, so +1 makes x = 1
+
 int Account::SetNumberOfYearPages() {
 	int x;
 	x = numberOfYears;
@@ -109,7 +118,10 @@ int Account::SetNumberOfYearPages() {
 }
 
 
-//change this to pass by reference
+//this function handles the logic of constructing the pages to display 
+//i kept this here so that the variables were more easily accessible by the function
+//it was easier than passing references and variables to getters outside a class
+//this could be moved at a later date
 void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;
 	int maxEntry = 0;
@@ -131,12 +143,13 @@ void Account::GetPages(int page, Account& newAccount, Draw& newDraw) {
 			minEntry = maxEntry - 5;
 		}
 	}
-	
+	//this function when called will ultimately call the DrawPages function
 	newDraw.DrawPages(newAccount, minEntry, maxEntry);
-	
 }
-//change this to pass by reference
 
+//this function is the same as the one above, but passes variables for month pages instead of year
+//pages
+//again, 1: could be placed elsewhere, and 2: could be comnbined with the above for less redundant code
 void Account::GetMonthPages(int page, Account& newAccount, Draw& newDraw) {
 	page += 1;
 	int maxEntry = 0;
@@ -162,6 +175,7 @@ void Account::GetMonthPages(int page, Account& newAccount, Draw& newDraw) {
 
 }
 
+//generic getters
 double Account::GetInitialInvestment() {
 	return initialInvestment;
 }
@@ -194,6 +208,7 @@ int Account::GetNumberOfPages() {
 	return pages;
 }
 
+//for debugging only
 void Account::DisplayAllValues() {
 	cout << initialInvestment << endl;
 	cout << interestRate << endl;

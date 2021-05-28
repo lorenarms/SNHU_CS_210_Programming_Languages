@@ -11,6 +11,11 @@
 #include "Draw.h"
 #include "Menu.h"
 
+
+//had some major issues with circular inclusion; couldn't figure out the issue and had to
+//completely start from scratch to narrow the problem down
+//in the end, i found that i needed to foward declare some classes within others
+
 using namespace std;
 
 int main() {
@@ -19,66 +24,51 @@ int main() {
 	Menu newMenu;
 	Calculate newCalculate;
 	Draw newDraw;
-
-	
-	newMenu.SetColor(15);
-	newMenu.SetWindowSize(800, 600);
-	newMenu.HideCursorBlink();
 	vector<string> mainMenu = { "New Account", "About", "Quit" };
-
 	bool outerRun = true;
 	bool mainRun = true;
 	int selection = 0;
-	newDraw.DrawMainTitle(newMenu);
-	newMenu.MenuModifier(mainMenu);
-	newMenu.DrawMenu(mainMenu, selection);
+	
+	newMenu.SetColor(15);						//set color to standard
+	newMenu.SetWindowSize(800, 600);			//set window size
+	newMenu.HideCursorBlink();				//hide the blink for now
+	newDraw.DrawMainTitle(newMenu);			//draw the main title
+	newMenu.MenuModifier(mainMenu);			//modify the main menu to fit
+	newMenu.DrawMenu(mainMenu, selection);	//draw the main menu
 
-	while (mainRun) {
+	while (mainRun) {		//outer loop for main menu, allow user to navigate menu
 		
 		newMenu.RunMenu(mainMenu, selection);
-		if (selection == 1) {
+		if (selection == 1) {		//stop this loop and continue to the next
 			mainRun = false;
 		}
-		else if (selection == 2) {
+		else if (selection == 2) {		//just show the about info
 
 			newDraw.DrawAbout(newMenu, newAccount, newDraw);
 		}
-		else if (selection == 3) {
+		else if (selection == 3) {			//quit the program
 			system("cls");
 			return 0;
 		}
 
 	}
 
-	
-
 	while (outerRun) {
 		system("cls");
 		int innerRun = 2;
-		newCalculate.UserInput(newAccount, newMenu, newDraw);
+		newCalculate.UserInput(newAccount, newMenu, newDraw);		//get user input for the account, return here
 		while (innerRun != 1 && innerRun != 0) {
 
-
 			innerRun = newCalculate.RunMainProgram(newMenu, newAccount, newDraw);
-			if (innerRun == 0) {
+			if (innerRun == 0) {			//run the main program, starting at RunMainProgram
 				outerRun = false;
 			}
-			else if (innerRun == 1) {
+			else if (innerRun == 1) {		//quit the program 
 				break;
 			}
-			
 		}
-		
-
 
 	}
-
-	//while loop
-		//starts with user input
-		//transfers to next loop
-		//while loop
-			//goes to runmainprogram function
-			//if return is false, exit inner loop
-			//start again at outer loop
+	system("cls");
 
 }

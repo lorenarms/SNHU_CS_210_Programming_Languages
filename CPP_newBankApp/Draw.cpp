@@ -7,6 +7,7 @@
 
 
 
+//this function is old, no longer used
 void Draw::DrawTable(Menu& menu, Account& newAccount, int page) {
 
 	printf("%-10s%-10s%-16s%-10s\n", "Year", "Deposit", "Interest", "Balance");
@@ -21,8 +22,15 @@ void Draw::DrawTable(Menu& menu, Account& newAccount, int page) {
 	}
 }
 
+//this function draws the pages for the years
+//it was written first, the next function was a carbon copy 
+//this was easier than trying to write a function as long as both combined that took in endless
+//params and checked for months versus years
+//a project for another time
+
 void Draw::DrawPages(Account& newAccount, int minEntry, int maxEntry) {
-	
+	//this function gets called from the Account file, from GetPages()
+	//draw the header
 	cout << " AirGead Banking: Account Statistics" << endl;
 	cout << setw(86) << setfill('=') << " " << endl;
 	cout << setfill(' ');
@@ -30,10 +38,9 @@ void Draw::DrawPages(Account& newAccount, int minEntry, int maxEntry) {
 	cout << setw(86) << setfill('-') << " " << endl;
 	cout << setfill(' ');
 	string output;
+	//draw all the items through a loop
+	//min and max entry vars let it know when to stop
 	for (int i = minEntry; i < maxEntry; i++) {
-
-		
-
 		cout << fixed << right << setw(5) << i + 1;
 		output = "$" + to_string(newAccount.GetMonthlyDeposit());
 		size_t pos = output.find(".");
@@ -53,7 +60,8 @@ void Draw::DrawPages(Account& newAccount, int minEntry, int maxEntry) {
 	}
 
 }
-
+//this is the same function as above
+//gets called from Account, GetMonthPages()
 void Draw::DrawMonthPages(Account& newAccount, int minEntry, int maxEntry) {
 
 	cout << " AirGead Banking: Account Statistics" << endl;
@@ -64,9 +72,6 @@ void Draw::DrawMonthPages(Account& newAccount, int minEntry, int maxEntry) {
 	cout << setfill(' ');
 	string output;
 	for (int i = minEntry; i < maxEntry; i++) {
-
-
-
 		cout << fixed << right << setw(5) << i + 1;
 		output = "$" + to_string(newAccount.GetMonthlyDeposit());
 		size_t pos = output.find(".");
@@ -86,15 +91,15 @@ void Draw::DrawMonthPages(Account& newAccount, int minEntry, int maxEntry) {
 	}
 
 }
-
+//this function draws the menu at the bottom of the main page
 void Draw::DrawMenu(Account& newAccount, Menu& newMenu, int item) {
-	
+	//draw the menu at the bottom
 	newMenu.SetNewCursor(17, 0);
 	printf("%25s%-10.2f\n", "Initial Investment: ", newAccount.GetInitialInvestment());
 	printf("%25s%-10.2f\n", "Monthly Deposit: ", newAccount.GetMonthlyDeposit());
 	printf("%25s%-10.3f\n", "Interest Rate: ", newAccount.GetInterestRate());
 	printf("%25s%-10d\n", "Number of Years: ", newAccount.GetNumberOfYears());
-	
+	//switch to determine which item is selected, and thus gets highlighted
 	newMenu.HideCursorBlink();
 	newMenu.SetColor(240);
 	switch (item) {
@@ -122,10 +127,13 @@ void Draw::DrawMenu(Account& newAccount, Menu& newMenu, int item) {
 
 	}
 	}
+	//reset the color
 	newMenu.SetColor(15);
 	
 }
 
+
+//this function draws everything... starts with the pages at the bottom of the table
 void Draw::DrawEverything(Menu& newMenu, Account& newAccount, int page, int selection, Draw& newDraw, int item, int data) {
 	system("cls");
 	newMenu.SetColor(15);
@@ -139,17 +147,20 @@ void Draw::DrawEverything(Menu& newMenu, Account& newAccount, int page, int sele
 	newMenu.SetNewCursor(15, 62);
 	cout << "> >";
 	newMenu.SetNewCursor(0, 0);
-	if (data == 0) {
+	if (data == 0) {		//check to see if it's months or years to show
 		newAccount.GetPages(page, newAccount, newDraw);
 	}
 	else if (data == 1) {
 		newAccount.GetMonthPages(page, newAccount, newDraw);
 	}
 	
-	newDraw.DrawMenu(newAccount, newMenu, item);
-	DrawInstructions(newMenu);
+	newDraw.DrawMenu(newAccount, newMenu, item);	//draw the menu at the bottom
+	DrawInstructions(newMenu);		//draw the instructions at the bottom
+
+	//return to RunMainProgram
 }
 
+//draw the splash page and menu
  int Draw::DrawMainTitle(Menu& newMenu) {
 	int selection = 1;
 	string sub = "Banking for the masses.";
@@ -189,6 +200,7 @@ void Draw::DrawEverything(Menu& newMenu, Account& newAccount, int page, int sele
 	return row;
 }
 
+ //draws the about section below the menu
  void Draw::DrawAbout(Menu& newMenu, Account& newAccount, Draw& newDraw) {
 	 system("cls");
 	 vector<string> about = { "AirGead Banking Corp.", "Copyright © 2021", "All rights reserved." };
@@ -208,6 +220,7 @@ void Draw::DrawEverything(Menu& newMenu, Account& newAccount, int page, int sele
 
  }
 
+ //draw the instructions for the main account window
  void Draw::DrawInstructions(Menu& newMenu) {
 	 newMenu.SetNewCursor(23, 0);
 	 cout << "**HOT KEYS: up/down to navigate inputs, 'enter' to change" << endl;

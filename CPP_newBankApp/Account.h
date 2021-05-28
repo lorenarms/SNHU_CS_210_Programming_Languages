@@ -7,12 +7,9 @@
 
 using namespace std;
 
+//#include "Draw.h"
+
 class Draw;
-
-class Account;
-
-
-
 
 class Account {
 public:

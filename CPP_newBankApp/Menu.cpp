@@ -9,6 +9,9 @@
 
 using namespace std;
 
+//any 'under the hood' menu functions happen here (color change, cursor change, menu constructing)
+
+//this function checks for key presses and returns the appropriate code
 int Menu::CheckKeyPress() {
 	if ((GetAsyncKeyState(0x51) & 0x01)) {			// 'q' key for 'quit'
 		return 1;
@@ -42,28 +45,31 @@ int Menu::CheckKeyPress() {
 
 //https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
+//sets the color; 240 for highlight, 15 for standard
 void Menu::SetColor(int color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
+//this function draws the main menu, is modular
+//the 'selected' param let's it know which item to draw with a highlight
+//this function is old
 void Menu::DrawMenu(string items[], int itemsLength, int selection) {
 	int selected = 240;
 	int unselected = 15;
 
-	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-
-
 	for (int i = 0; i < itemsLength; i++) {
 		SetNewCursor(i + 2, 2);
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-		//cout << i << endl;
-
+		
 		if (i == selection - 1) {
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), selected);
 		}
 		cout << items[i] << endl;
 	}
 }
+
+//this function draws the menu in the center of the console window at whichever row specified
+
 void Menu::DrawMenu(vector<string> menu, int& selection) {
 	int width = menu.at(0).size();
 	int column = GetWindowWidth();
@@ -84,10 +90,12 @@ void Menu::DrawMenu(vector<string> menu, int& selection) {
 	}
 }
 
+//this is the logic for the menu, tells which to draw highlighted and selected
+//uses the checkKeyPress function to determine where the user moves and which they select
 void Menu::RunMenu(vector<string> menu, int& selection) {
 	bool i = true;
 	int j = 0;
-	DrawMenu(menu, selection);
+	DrawMenu(menu, selection);		//draw the menu first with the correct selection highlighted
 	while (i) {
 		j = CheckKeyPress();
 		if (j == 3) {				//down
@@ -108,7 +116,6 @@ void Menu::RunMenu(vector<string> menu, int& selection) {
 
 		}
 		else if (j == 2) {		//enter
-			//i = false;
 			return;
 		}
 		DrawMenu(menu, selection);
@@ -135,13 +142,20 @@ void Menu::HideCursorBlink() {
 
 void Menu::ShowCursorBlink() {
 
-	//hide the blinking cursor
+	//show the blinking cursor
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO info;
 	info.dwSize = 100;
 	info.bVisible = TRUE;
 	SetConsoleCursorInfo(consoleHandle, &info);
 }
+
+//this function modifies the vector passed to it to contain all strings of the same length
+//with space on either side; this is for the menu, so all menu items are the same size and centered
+//first it finds the longest menu item
+//then it sets that value as the standard
+//adds 10 to the size
+//then makes all menu items that size by adding spaces to front and back of the item2
 
 void Menu::MenuModifier(vector<string>& menu) {
 	int max = 0;
@@ -155,7 +169,7 @@ void Menu::MenuModifier(vector<string>& menu) {
 
 		}
 	}
-	max += 10;
+	max += 10;				//change this value to change the width of the menu
 	for (int i = 0; i < menu.size(); i++) {
 		if (menu.at(i).length() % 2 != 0) {
 			menu.at(i) += " ";
@@ -178,6 +192,7 @@ void Menu::MenuModifier(vector<string>& menu) {
 
 }
 
+//sets the size of the console window
 void Menu::SetWindowSize(int w, int h) {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
@@ -186,6 +201,7 @@ void Menu::SetWindowSize(int w, int h) {
 	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, w, h, TRUE);
 }
 
+//returns the width of the window, so displayed items can be centered if necessary
 int Menu::GetWindowWidth() {
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	int columns, rows;
