@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4946aaf2-2a39-4579-a8f3-8e3b3d295e7c}</ProjectGuid>
-    <RootNamespace>CPPLab717</RootNamespace>
+    <ProjectGuid>{2fb45b29-ecbd-4cba-a3c5-1c4f7220230a}</ProjectGuid>
+    <RootNamespace>CPPLab1014LinkedList</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>CPP_Lab_7.17_ShopCart</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ItemToPurchase.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ContactNode.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ItemToPurchase.h" />
+    <ClInclude Include="ContactNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
