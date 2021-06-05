@@ -25,7 +25,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_vectors", "CPP_vectors\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_6.11", "CPP_Lab_6.11\CPP_Lab_6.11.vcxproj", "{7213F2DF-C17D-4297-90E0-B3CF5D2E75D1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_7.17", "CPP_Lab_7.17\CPP_Lab_7.17.vcxproj", "{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_7.17_ShopCart", "CPP_Lab_7.17\CPP_Lab_7.17.vcxproj", "{4946AAF2-2A39-4579-A8F3-8E3B3D295E7C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_holdEm", "CPP_holdEm\CPP_holdEm.vcxproj", "{DC106213-C068-42AF-AC01-AAAAF1F482A5}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_LinkedList", "CPP_LinkedList\CPP_LinkedList.vcxproj", "{2EACA9D0-C8EA-43B6-A9B2-378A8E09A8CF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Lab_10.14_LinkedList", "CPP_Lab_10.14_LinkedList\CPP_Lab_10.14_LinkedList.vcxproj", "{2FB45B29-ECBD-4CBA-A3C5-1C4F7220230A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_pythonIntegration_2", "CPP_pythonIntegration_2\CPP_pythonIntegration_2.vcxproj", "{EB565C85-7575-456A-BDC8-96A26D897033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +193,14 @@ Global
 		{2FB45B29-ECBD-4CBA-A3C5-1C4F7220230A}.Release|x64.Build.0 = Release|x64
 		{2FB45B29-ECBD-4CBA-A3C5-1C4F7220230A}.Release|x86.ActiveCfg = Release|Win32
 		{2FB45B29-ECBD-4CBA-A3C5-1C4F7220230A}.Release|x86.Build.0 = Release|Win32
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Debug|x64.ActiveCfg = Debug|x64
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Debug|x64.Build.0 = Debug|x64
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Debug|x86.ActiveCfg = Debug|Win32
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Debug|x86.Build.0 = Debug|Win32
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Release|x64.ActiveCfg = Release|x64
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Release|x64.Build.0 = Release|x64
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Release|x86.ActiveCfg = Release|Win32
+		{EB565C85-7575-456A-BDC8-96A26D897033}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

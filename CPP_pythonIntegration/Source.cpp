@@ -6,6 +6,7 @@
 using namespace std;
 
 int main() {
+	
 	cout << "Start 1 \n";
 	Py_Initialize();
 	cout << "2\n";
@@ -17,5 +18,7 @@ int main() {
 	cout << "4\n";
 	PyObject* my_result = PyObject_CallObject(my_function, NULL);
 	Py_Finalize();
+	
+	
 
 }

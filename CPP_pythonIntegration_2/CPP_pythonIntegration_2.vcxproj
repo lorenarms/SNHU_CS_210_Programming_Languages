@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{505573cb-6190-421b-9f8e-9a7898c53d7d}</ProjectGuid>
-    <RootNamespace>CPPpythonIntegration</RootNamespace>
+    <ProjectGuid>{eb565c85-7575-456a-bdc8-96a26d897033}</ProjectGuid>
+    <RootNamespace>CPPpythonIntegration2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -75,8 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Python39-32\include;C:\Program Files\Python39\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Python39-32\libs;C:\Program Files\Python39\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Python39-32\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Python39-32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -141,10 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Release\pthon.py" />
+    <None Include="..\Release\PythonCode.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
