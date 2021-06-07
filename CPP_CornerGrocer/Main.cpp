@@ -199,7 +199,7 @@ void main()
 		}
 		case '3':
 			//choice = Checker();
-			CallProcedure("ReadFile");
+			CallProcedure("CountItems");
 			break;
 
 		default: {
