@@ -18,17 +18,11 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cursorSet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MenuDriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cursorSet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuDriver.h">
       <Filter>Header Files</Filter>
     </ClInclude>

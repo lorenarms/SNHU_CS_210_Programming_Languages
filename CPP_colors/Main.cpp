@@ -1,44 +1,64 @@
 #include <iostream>
-#include "cursorSet.h"
+#include <string>
 #include <Windows.h>
 #include <vector>
-#include "MenuDriver.h"
 
+#include "MenuDriver.h"
 
 using namespace std;
 
-int mainMenu(MenuDriver& newMenu);
+int MainMenu(MenuDriver& newMenu, vector<string>& menu, int columnToDraw) {
+	int selection = 0;
+	newMenu.RunMenu(menu, selection, columnToDraw);
+	return selection;
+}
 
 int main() {
 
-	int run = 0;
-	bool mainPrgm = true;
-	
+	//declare your objects
 	MenuDriver newMenu;
 	MenuDriver newCursor;
+	
+	//set your menu items here
+	vector <string> menu = { "Selection 1", "Short", "This is long Selection 3" , "this", "new selection", "Quit", "Continue" };
+	
+	//set the column to start drawing the menu
+	int m = newMenu.MenuModifier(menu);
+	//this is to center it; comment out and change to something else to move it
+	int w = newCursor.GetWindowWidth();		//also called 'columnToDraw'
+	w /= 2;
+	w -= (m / 2);
+	
 	newCursor.HideCursorBlink();
-	while (mainPrgm) {
-		run = mainMenu(newMenu);
-		if (run == 6) {
-			mainPrgm = false;
-		}
-		else if (run == 7) {
-			newCursor.SetNewCursor(10, 10);
+
+	//variables for loop
+	int selection = 0;
+	bool run = true;
+	
+	while (run) {
+		selection = MainMenu(newMenu, menu, w);
+		switch (selection) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4: 
+			break;
+		case 5:
+			break;
+		case 6:
+			system("cls");
+			run = false;
+		case 7:
+			newCursor.SetNewCursor(10, 0);
 			cout << "Continuing..." << endl;
-			
+			break;
+		default:
+			break;
 		}
-
 	}
-
-	//cout << "You selected " << menu.at(selection - 1) << endl;
 	return 0;
 }
 
-int mainMenu(MenuDriver& newMenu) {
-	int selection = 0;
-	vector <string> menu = { "Selection 1", "Short", "This is long Selection 3" , "this", "new selection", "Quit", "Continue" };
-
-	newMenu.MenuModifier(menu);
-	newMenu.RunMenu(menu, selection);
-	return selection;
-}

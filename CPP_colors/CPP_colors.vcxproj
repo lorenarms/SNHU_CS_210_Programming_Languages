@@ -141,12 +141,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MenuDriver.cpp" />
-    <ClCompile Include="cursorSet.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuDriver.h" />
-    <ClInclude Include="cursorSet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

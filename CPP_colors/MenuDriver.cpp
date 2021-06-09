@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 #include <algorithm>
 
 #include "MenuDriver.h"
@@ -29,45 +28,26 @@ int MenuDriver::CheckKeyPress() {
 //https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
 
-void MenuDriver::DrawMenu(string items[], int itemsLength, int selection) {
-	int selected = 240;
-	int unselected = 15;
-
-	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-	
-	
-	for (int i = 0; i < itemsLength; i++) {
-		SetNewCursor(i + 2, 2);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-		//cout << i << endl;
-		
-		if (i == selection - 1) {
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), selected);
-		}
-		cout << items[i] << endl;
-	}
-}
-void MenuDriver::DrawMenu(vector<string> menu, int& selection) {
+void MenuDriver::DrawMenu(vector<string> menu, int& selection, int& columnToDraw) {
+	//use these to change the menu colors
 	int selected = 240;
 	int unselected = 15;
 	for (int i = 0; i < menu.size(); i++) {
-		SetNewCursor(i + 2, 2);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-
+		SetNewCursor(i, columnToDraw);
+		SetColor(unselected);
 		if (i == selection - 1) {
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), selected);
+			SetColor(selected);
 		}
 		cout << menu.at(i) << endl;
-		SetNewCursor(6, 20);
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), unselected);
-		//cout << "Index: " << selection << endl;
+		//resets the color
+		SetColor(unselected);
 	}
 }
 
-void MenuDriver::RunMenu(vector<string> menu, int& selection) {
+void MenuDriver::RunMenu(vector<string> menu, int& selection, int& columnToDraw) {
 	bool i = true;
 	int j = 0;
-	DrawMenu(menu, selection);
+	DrawMenu(menu, selection, columnToDraw);
 	while (i) {
 		j = CheckKeyPress();
 		if (j == 3) {				//down
@@ -90,7 +70,7 @@ void MenuDriver::RunMenu(vector<string> menu, int& selection) {
 		else if (j == 2) {		//enter
 			return;
 		}
-		DrawMenu(menu, selection);
+		DrawMenu(menu, selection, columnToDraw);
 	}
 }
 
@@ -102,8 +82,8 @@ void MenuDriver::SetNewCursor(int row, int col) {
 	COORD coord = { (SHORT)col, (SHORT)row };
 	SetConsoleCursorPosition(hOut, coord);
 }
-void MenuDriver::HideCursorBlink() {
 
+void MenuDriver::HideCursorBlink() {
 	//hide the blinking cursor
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO info;
@@ -112,7 +92,16 @@ void MenuDriver::HideCursorBlink() {
 	SetConsoleCursorInfo(consoleHandle, &info);
 }
 
-void MenuDriver::MenuModifier(vector<string>& menu) {
+void MenuDriver::ShowCursorBlink() {
+	//show the blinking cursor
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	info.dwSize = 100;
+	info.bVisible = TRUE;
+	SetConsoleCursorInfo(consoleHandle, &info);
+}
+
+int MenuDriver::MenuModifier(vector<string>& menu) {
 	int max = 0;
 	int min = 0;
 	int spaces = 0;
@@ -121,7 +110,6 @@ void MenuDriver::MenuModifier(vector<string>& menu) {
 	for (int i = 0; i < menu.size(); i++) {
 		if (menu.at(i).length() > max) {
 			max = menu.at(i).length();
-			
 		}
 	}
 	max += 10;
@@ -143,6 +131,30 @@ void MenuDriver::MenuModifier(vector<string>& menu) {
 			menu.at(i) + " ";
 		}
 	}
-	
-	
+
+	return max;
 }
+
+void MenuDriver::SetWindowSize(int w, int h) {
+	HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
+
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, w, h, TRUE);
+}
+
+//returns the width of the window, so displayed items can be centered if necessary
+int MenuDriver::GetWindowWidth() {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int columns, rows;
+
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+	return columns;
+}
+
+void MenuDriver::SetColor(int color) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
