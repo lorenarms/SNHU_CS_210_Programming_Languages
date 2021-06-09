@@ -142,12 +142,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Release\PythonCode.py" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Release\CS210_Project_Three_Input_File.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
