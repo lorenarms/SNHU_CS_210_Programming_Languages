@@ -1,4 +1,4 @@
-#include <Python.h>
+﻿#include <Python.h>
 #include <iostream>
 #include <Windows.h>
 #include <cmath>
@@ -13,10 +13,22 @@ using namespace std;
 
 
 void GraphData() {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 15);
 	ifstream inFS;
 	ifstream inNow;
 	string item;
 	int count;
+	//wanted to use extended ascii 254 for this, but it only prints once and then never again 
+	//un-comment to see what i mean
+	
+	//char bar(254);
+
+	//this has something to do with the Python implementation, as it works until the Python script is called
+
+	string bar = "|";
+	
+
 	string graph = "";		//histograph string
 	inFS.open("frequency.dat");
 
@@ -29,6 +41,7 @@ void GraphData() {
 	//print the graph
 	cout << " HISTOGRAM OF ITEMS PURCHASED" << endl;
 	cout << " =============================\n" << endl;
+	int k = 10;
 	do {
 		inFS >> item;
 		if (item == "end") {	//make sure python func prints 'end' at the end so that this works
@@ -37,14 +50,28 @@ void GraphData() {
 			return;
 		}
 		inFS >> count;
-		for (int i = 0; i < count; i++) {
-			graph += "@";
-		}
-
-		cout << setw(12) << right << item << "|" << graph << " " << count << endl;
-		graph = "";
 		
+		for (int i = 0; i < count; i++) {
+			
+			if (i == count -1) {
+				graph += "|";
+			}
+			else {
+				graph += bar;
+			}
+			
+		}
+		//alternate colors of the histogram
+		SetConsoleTextAttribute(hConsole, k);
+		cout << setw(12) << right << item << "|" << setw(13) << left << graph << " " << setw(2) << right << count << endl;
+		graph = "";
+		k++;
+		if (k == 14) {
+			k = 10;
+		}
+		SetConsoleTextAttribute(hConsole, 15);
 	} while (inFS);
+	
 }
 
 string SearchItem(Menu& newMenu) {
@@ -244,7 +271,6 @@ int callIntFunc(string proc, int param)
 
 void main()
 {
-	
 	Menu mainMenu;
 	int selection = 0;
 	//modify the menu to look nice
@@ -264,6 +290,9 @@ void main()
 	}
 	
 	bool run = true;
+
+	//create .dat file so that menu option 3 can be called right away
+	CallProcedure("WriteItems");
 	
 	while (run) {
 		selection = MainMenu(mainMenu, menuItems);
@@ -277,7 +306,11 @@ void main()
 		}
 		case 2: {
 			string s = SearchItem(mainMenu); 
+
 			system("cls");
+			if (s == "999") {
+				break;
+			}
 			int count = callIntFunc("SingleItem", s);
 			if (count == 0) {
 				cout << "No such item exists, try again." << endl;
@@ -299,6 +332,8 @@ void main()
 
 		}
 		case 3:
+			//rewrite .dat file in case of updates
+			CallProcedure("WriteItems");
 			ClearColumn(mainMenu);
 			mainMenu.SetNewCursor(0, 0);
 			GraphData();

@@ -34,11 +34,14 @@ int main() {
 	//variables for loop
 	int selection = 0;
 	bool run = true;
+
+	
 	
 	while (run) {
 		selection = MainMenu(newMenu, menu, w);
 		switch (selection) {
 		case 1:
+			
 			break;
 		case 2:
 			break;

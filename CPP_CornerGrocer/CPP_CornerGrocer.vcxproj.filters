@@ -23,11 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Release\PythonCode.py">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="Release\CS210_Project_Three_Input_File.txt">
       <Filter>Source Files</Filter>
     </Text>
@@ -36,5 +31,10 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Release\PythonCode.py">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
