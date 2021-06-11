@@ -7,9 +7,38 @@
 
 using namespace std;
 
-int MainMenu(MenuDriver& newMenu, vector<string>& menu, int columnToDraw) {
+int MainMenu(MenuDriver& newMenu, vector<string>& menu, MenuDriver& newCursor, int columnToDraw) {
 	int selection = 0;
-	newMenu.RunMenu(menu, selection, columnToDraw);
+	bool run = true;
+	while (run) {
+		newMenu.RunMenu(menu, selection, columnToDraw);
+		switch (selection) {
+		case 1:
+			system("cls");
+			cout << "Selection 1..." << endl;
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			system("cls");
+			run = false;
+			break;
+		case 7:
+			newCursor.SetNewCursor(10, 0);
+			cout << "Continuing..." << endl;
+			break;
+		default:
+			break;
+		}
+	}
+
+
 	return selection;
 }
 
@@ -35,10 +64,11 @@ int main() {
 	int selection = 0;
 	bool run = true;
 
+	MainMenu(newMenu, menu, newCursor, w);
 	
-	
+	/*
 	while (run) {
-		selection = MainMenu(newMenu, menu, w);
+		selection = MainMenu(newMenu, menu, newCursor, w);
 		switch (selection) {
 		case 1:
 			
@@ -62,6 +92,8 @@ int main() {
 			break;
 		}
 	}
+	*/
+	
 	return 0;
 }
 
