@@ -1,3 +1,8 @@
+/*
+practicing with vectors, specifically writing objects to a vector and accessing 
+the objects
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>

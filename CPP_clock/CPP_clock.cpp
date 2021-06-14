@@ -1,3 +1,11 @@
+/*
+This was my first attempt at a very simple C++ clock for project 1 in CS 210
+Most of this code was found online and only small tweaks were done by me so 
+that i could get a sense of what each line of code did
+
+Some of this code was used in the "final clock" and "better clock" apps
+*/
+
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>

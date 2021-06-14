@@ -1,4 +1,14 @@
-﻿#include <Python.h>
+﻿/*
+* This app was the final project for CS 210
+* Using python integration, it takes a text document of items purchased from a grocery
+* store, compiles them into a list, alphabetizes and counts the number of each item, 
+* then displays the results in a list or in a histogram 
+* 
+* Python does the majority of work, while C++ handles the user interactions
+* 
+*/
+
+#include <Python.h>
 #include <iostream>
 #include <Windows.h>
 #include <cmath>

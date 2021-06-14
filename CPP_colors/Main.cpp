@@ -1,3 +1,13 @@
+/*
+This a modular, designed to be dropped into any program I write that needs an interactive menu
+
+This displays a menu in the center of the console, allows users to use arrow keys and 
+enter to select the desired item, and can be customized for any menu size, position, and color
+scheme
+
+*/
+
+
 #include <iostream>
 #include <string>
 #include <Windows.h>

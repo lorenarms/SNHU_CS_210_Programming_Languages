@@ -1,3 +1,9 @@
+/*
+A program that takes a text file of city names and temperatures, converts
+the temperatures from F to C, and rewrites the city names and temperatures
+to a separate file
+*/
+
 #include <vector>
 #include <string>
 #include <iostream>

@@ -1,3 +1,18 @@
+/*
+/*
+This was the first project for CS 210 course
+I had to develop a "web clock" that would display the time in both 12h and 24h format,
+and then had to accept user input to change the time by seconds, minutes, or hours
+I opted for a more interactive approach than a simple "menu of items to choose from"
+per the instructions. Final result accepts one press of specific keyboard keys to
+make changes to times
+
+This is the final version of the app, which uses multiple class files instead of a 
+linear design
+
+*/
+
+
 #include "webClock.h"
 #include <stdio.h>
 #include <ctime>

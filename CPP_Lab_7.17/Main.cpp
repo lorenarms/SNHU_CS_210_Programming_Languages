@@ -1,3 +1,8 @@
+/*
+This was a lab from CS 210, creating a simple vector list of items in a grocery cart
+
+*/
+
 #include <iostream>
 #include <vector>
 
