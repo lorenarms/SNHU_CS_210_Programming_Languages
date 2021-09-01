@@ -1,3 +1,7 @@
+/*
+unfinished, meant to calculate Newton's Laws based on various inputs
+*/
+
 #include <iostream>
 #include "SecondLaw.h"
 

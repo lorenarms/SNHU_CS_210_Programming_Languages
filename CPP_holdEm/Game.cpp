@@ -1,3 +1,8 @@
+/*
+This is the start of a personal project, meant to be a simple card game with
+console graphics
+*/
+
 #include <string>
 #include <vector>
 #include <iostream>

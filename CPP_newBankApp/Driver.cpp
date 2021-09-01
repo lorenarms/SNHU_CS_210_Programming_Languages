@@ -1,3 +1,14 @@
+/*
+* This is the project 2 submission for CS 210
+* 
+* This app is a banking app that takes user input for a savings account, and displays the
+* balance and interest earned by year or month in pages of five
+* 
+* this app uses my "menu" modular, as well as simple key input instead of a number menu
+* 
+* This may be the best app in this list thus far
+*/
+
 #include <iostream>
 #include <vector>
 #include <Windows.h>

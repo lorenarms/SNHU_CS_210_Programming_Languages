@@ -1,3 +1,7 @@
+/*
+Another linked list example
+*/
+
 #include <iostream>
 #include <string>
 

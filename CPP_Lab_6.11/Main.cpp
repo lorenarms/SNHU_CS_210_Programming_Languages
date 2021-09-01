@@ -1,3 +1,10 @@
+/*
+This was a lab from CS 210, sorting a vector
+
+Instructions/parameters are at the bottom
+*/
+
+
 #include <iostream>
 #include <vector>
 using namespace std;

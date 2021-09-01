@@ -1,3 +1,10 @@
+/*
+A simple method to check for key presses from the user
+this method is used extensively in menus in my other apps
+
+see "finalClock" app or "newBankApp" for more details
+*/
+
 using namespace std;
 #include <iostream>
 #include <stdio.h>

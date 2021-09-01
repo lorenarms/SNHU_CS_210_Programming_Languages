@@ -1,3 +1,9 @@
+/*
+A more complex python integraion from CS 210
+
+Most code was provided by the professor, and modified to complete simple tasks
+*/
+
 #include <Python.h>
 #include <iostream>
 #include <Windows.h>

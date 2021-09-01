@@ -1,3 +1,11 @@
+/*
+This was my first attempt at developing the "Banking App" for my CS 210 Course, Project 2
+i ran into some issues with communication between classes, and had to abandon this project
+I eventually figured out it was an issue with circular inclusion, which i fixed in the
+updated version "newBankApp"
+*/
+
+
 #include <iostream>
 #include <fstream>
 #include <Windows.h>

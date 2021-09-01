@@ -3,6 +3,12 @@
  *
  *  Date: May 11, 2021
  *  Author: Lawrence Artl III
+ * 
+ * This was a set of code provided for a small assignment in CS 210
+ * There were errors in the code and i had to debug them and resubmit a working
+ * version
+ * 
+ * fixes are commented below
  */
 
 #include <iostream>
