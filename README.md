@@ -1,3 +1,5 @@
+<h2>CS-210 Programming Languages in C++</h2>
+
 This repository started as a solution from VS 2019, containing all projects from my CS 210 “Programming Languages” class at SNHU, Summer 2021. 
 From here it continued to grow as I explored C++ and developed skills and tactics to problem-solve using this language. 
 All programs contain some commenting to give some insight as to what they are meant to do.
